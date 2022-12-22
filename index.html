@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getgoodies.eth</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@500&display=swap');
+        body{
+            background-color: black;
+            color: white;
+            font-family: 'Unbounded', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            }
+
+            .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            }
+
+            .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            }
+            .box-media{
+                margin-left: 50px;
+            }
+            #discounts-box{
+                margin-left: 1%;
+            }
+            @media only screen and (max-width: 600px) {
+                #order-j {
+                    display: none;
+                }
+                .box-media{
+                    margin-left: 2%;
+                }
+                #discounts-box{
+                    margin-left: -6%;
+                }
+                #only-d{
+                    display: none;
+                }
+            }
+            
+    </style>
+</head>
+<body style="background-color: black;">
+    <div style="width: 100%; background-color: white; height: 60px;">
+        <center style="color: black;">
+            <br>
+            Buy your favorites online, delivered to your doorstep.
+            <span id="myBtn" style="float: right; margin-right: 25px;">Cart</span>
+            <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <center>
+                    <div id="cart-items">
+
+                    </div>
+                    <br>
+                    <input type="text" style="width: 60%; font-size: 1.5rem; border: 2px rgb(208, 204, 204) solid; outline: none; padding: 3px; display: none;" placeholder="Email" id="email">
+                    <button style="font-size: 1.5rem; padding: 5px;" onclick="emptyCart()">Clear Cart</button>
+                    <button style="font-size: 1.5rem; padding: 5px;" onclick="confirmPurchase()">Check Out</button>
+                </center>
+            </div>
+
+            </div>
+            <script>
+                var modal = document.getElementById("myModal");
+
+                var btn = document.getElementById("myBtn");
+
+                var span = document.getElementsByClassName("close")[0];
+
+                function refresh_cart(){
+                    var cart_elements = window.localStorage.getItem("cart").split("&&")
+                    var elems = ""
+
+                    for(i = 0; i < cart_elements.length; i++){
+                        elems += cart_elements[i] + "<br>"
+                    }
+
+                    document.getElementById("cart-items").innerHTML = elems
+                }
+
+                btn.onclick = function() {
+                    refresh_cart()
+                    modal.style.display = "block";
+                }
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                }
+            </script>
+        </center>
+    </div>
+    <center>
+        <h1>getgoodies.eth</h1>
+        <p>Fast, Secure, Reliable</p>
+        <br>
+        <div style="width: 90%; height: 500px; background-image: url('https://theexchangempls.com/wp-content/uploads/2020/01/concert-2527495_1280.jpg'); border-radius: 15px; filter: blur(100px);" alt="">
+            <span style="opacity: 0;">Ruben Rehn</span>
+        </div>
+        <h1 style="color: rgb(139, 2, 174); margin-top: -220px; position: relative; z-index: 999;">Safe, easy & secure.</h1>
+        <p style="color: rgb(139, 2, 174); margin-top: -100px; position: relative; z-index: 999;" id="only-d">Only drug market on the light web.</p>
+    </center>
+    <br>
+    <center style="margin-top: 300px; margin-left: 50px;">
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left;" class="box-media">
+            Cocaine
+            <br>
+            <br>
+            <img src="https://images.newscientist.com/wp-content/uploads/2022/11/24172334/SEI_135020070.jpg" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$75</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('Cocaine 1 gr - $75')">Add to Cart 1gr Cocaine</button>
+        </div>
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left;" class="box-media">
+            Ecstacy
+            <br>
+            <br>
+            <img src="https://www.mydr.com.au/wp-content/uploads/2019/01/AdobeStock_109861388-scaled-e1618969753558.jpg" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$10</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('MDMA 1 Pill 240 mg - $10')">Add to Cart Ecstacy 1 Pill(240 mg)</button>
+        </div>
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left;" class="box-media">
+            Cannabis - Weed
+            <br>
+            <br>
+            <img src="https://media.cnn.com/api/v1/images/stellar/prod/220724124922-marijuana-stock.jpg?c=original" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$150 per Oz.</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('Weed 1 oz - $150')">Add to Cart 1 Oz. of Weed</button>
+        </div>
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left;" class="box-media">
+            Methamphetamine
+            <br>
+            <br>
+            <img src="https://evrimagaci.org/public/content_media/bf43fc0638101bdcdd0fd44fa869f3b7.jpg" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$90</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('Methamphetamine 2 gr - $90')">Add to Cart Methamphetamine 2 gr</button>
+        </div>
+        <div id="discounts-box" style="border-radius: 15px; width: 90%; height: 400px; border: 2px solid white; padding: 15px; float: left; margin-top: 50px;">
+            <h2>Special Discounts</h2>
+            <p>Enjoy the special 10% getgoodies.eth discount for orders over $500.</p>
+            <br>
+            <p id="order-j">Order for your self or jointly with your friends for the biggest of parties. getgoodies.eth has you covered; get the best prices with the most security and convenience, deliever to your doorstep at half the street price.</p>
+            <br>
+            <p>Refer to your friends and get 15% off, if you have the order id of a friend let us know and we will give you a special 15% discount.</p>
+            <br>
+            <button style="background-color: rgb(139, 2, 174); color: white; border-radius: 15px; font-size: 1.5rem; padding: 15px; border: none;">getgoodies.eth</button>
+        </div>
+        <br>
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left; margin-top: 50px;" class="box-media">
+            Bagged Edible
+            <br>
+            <br>
+            <img src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/eating-weed-1296x728-feature.jpg" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$20</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('Edible 1 pack - $20')">Add to Cart Edible 1 Pack</button>
+        </div>
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left; margin-top: 50px;" class="box-media">
+            LSD
+            <br>
+            <br>
+            <img src="https://image.pbs.org/video-assets/0dEWmHv-asset-mezzanine-16x9-f6RFLOv.jpg" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$10</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('LSD 1 Tab - $10')">Add to Cart LSD 1 Tab</button>
+        </div>
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left; margin-top: 50px;" class="box-media">
+            DOC 5x 2mg pills
+            <br>
+            <br>
+            <img src="https://jersey.police.uk/media/568239/mdma-umbraco.jpg?width=705&height=470&mode=crop" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$50</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('DOC 5x 2mg pills - $50')">Add to Cart DOC 5x 2mg pills</button>
+        </div>
+        <div style="border-radius: 15px; width: 250px; height: 400px; border: 2px solid white; padding: 15px; float: left; margin-top: 50px;" class="box-media">
+            Heroin
+            <br>
+            <br>
+            <img src="https://www.crestviewrecoverycenter.com/wp-content/uploads/2017/12/is-heroin-an-opiate-1200x801.jpeg" style="width: 100%; border-radius: 10px;" alt="">
+            <br>
+            <br>
+            <p>$60</p>
+            <br>
+            <button style="color: black; border-radius: 10px; background-color: white; border: none; font-size: 1rem; padding: 15px;" onclick="addToCart('Heroin 1 gr - $60')">Add to Cart Heroin 1 gr</button>
+        </div>
+    </center>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script>
+        function addToCart(addition){
+            var cart_items = window.localStorage.getItem("cart")
+            if(cart_items == null){
+                window.localStorage.setItem("cart", addition + "&&")
+            }else{
+                window.localStorage.setItem("cart", cart_items + addition + "&&")
+            }
+            alert("Added " + addition +  " to cart.")
+        }
+
+        function emptyCart(){
+            window.localStorage.clear()
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+        function makeid(length) {
+            var result = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+        function confirmPurchase(){
+            var mid =  makeid(12)
+            window.open("mailto:getgoodies@mail2tor.com?subject=New Order&body=Order: " + localStorage.getItem("cart").replaceAll("&&", " | ") + "\nOrder ID: " + mid)
+            alert("We have been experiencing a high volume and to protect our website from DoS attacks we have opened a new window using your email client please send the email we created from the window we opened so we can confirm that you are not a bot.")
+        }
+    </script>
+</body>
+</html>
